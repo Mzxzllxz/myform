@@ -86,9 +86,12 @@ dependencies {
     testImplementation("org.dbunit:dbunit:2.8.0")
 }
 
-tasks.test {
+tasks.withType<Test> {
     exclude("**/**")
 }
+//tasks.test {
+//    exclude("**/**")
+//}
 //tasks.withType<Test> {
 //    useJUnitPlatform()
 //}
