@@ -84,18 +84,40 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     // https://mvnrepository.com/artifact/org.dbunit/dbunit
     testImplementation("org.dbunit:dbunit:2.8.0")
+
+    implementation("com.querydsl:querydsl-jpa:5.0.0")
+    implementation("com.querydsl:querydsl-apt:5.0.0")
+
+    annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jpa")
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 }
 
 tasks.withType<Test> {
     exclude("**/**")
 }
-//tasks.test {
-//    exclude("**/**")
-//}
+
+val querydslSrcDir = "src/main/generated"
+
+sourceSets {
+    named("main") {
+        java {
+            srcDirs(querydslSrcDir)
+        }
+    }
+}
+
+tasks.compileJava {
+    options.compilerArgs.add("-Aquerydsl.generatedAnnotationClass=javax.annotation.Generated")
+}
+
+tasks.withType<JavaCompile> {
+    options.generatedSourceOutputDirectory.set(file(querydslSrcDir))
+}
+
+tasks.clean {
+    delete(file(querydslSrcDir))
+}
 //tasks.withType<Test> {
 //    useJUnitPlatform()
-//}
-//exclude
-//test {
-//    exclude '**/**'
 //}
