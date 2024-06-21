@@ -33,6 +33,8 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+    implementation("org.mariadb.jdbc:mariadb-java-client")
+
     annotationProcessor("org.projectlombok:lombok")
 
     implementation("org.junit.platform:junit-platform-launcher:1.10.2")
@@ -85,10 +87,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.dbunit/dbunit
     testImplementation("org.dbunit:dbunit:2.8.0")
 
-    implementation("com.querydsl:querydsl-jpa:5.0.0")
-    implementation("com.querydsl:querydsl-apt:5.0.0")
+    implementation("com.querydsl:querydsl-jpa:5.1.0:jakarta")
+    implementation("com.querydsl:querydsl-apt:5.1.0:jakarta")
 
-    annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jpa")
+    annotationProcessor("com.querydsl:querydsl-apt:5.1.0:jakarta")
     annotationProcessor("jakarta.persistence:jakarta.persistence-api")
     annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 }

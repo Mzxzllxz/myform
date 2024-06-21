@@ -6,7 +6,8 @@ spring:
     url: jdbc:mariadb://localhost:3307/maria
     driver-class-name: org.mariadb.jdbc.Driver
     username: admin
-    password: maria
+#    password: maria
+    password: ENC(+X+9Ib/SkrOxCO5ZZPJPBg==)
     name: maria
 
   jpa:
@@ -24,4 +25,17 @@ spring:
 
   logging.level:
     org.hibernate.SQL: debug
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    algorithm: PBEWithMD5AndDES
+    key-obtention-iterations: 1000
+    pool-size: 2
+    provider-name: BC
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64
+    property:
+      prefix: ENC(
+      suffix: )
 
