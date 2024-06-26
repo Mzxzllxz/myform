@@ -7,7 +7,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: admin
 #    password: maria
-    password: ENC(+X+9Ib/SkrOxCO5ZZPJPBg==)
+    password: ENC(yjqanDMXGdI+ShLKnQVShA==)
     name: maria
 
   jpa:
@@ -19,7 +19,7 @@ spring:
         use_sql_comments: true
         dialect: org.hibernate.dialect.MariaDB106Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     open-in-view: false
     show_sql: true
 
